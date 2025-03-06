@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Codelingo Login</title>
+        <script src = "validate.js" defer></script>
+        <style>
+            .background
+            {
+                background-image: url("Codelingo_background.webp");
+            }
+            .title
+            {
+                margin: 40px 525px;
+                background-color: white;
+                width: 250px;
+                height: 100px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <body class = "background">
+        <h1 class="title">Codelingo Login!</h1>
+        <form onsubmit="return checkValid(event)">
+            <label for="first">First Name: </label>
+            <input type = "text" name = "first" id = "first">
+            <span id = "errorMsg"></span>
+            <label for="last">Last Name: </label>
+            <input type = "text" name = "last" id = "last">
+            <span id = "errorMsg"></span>
+            <label for="emailAddr">Email Address:</label>
+            <input type="email" name="emailAddr" id="emailAddr" required>
+            <span id = "errorMsg"></span>
+            <label for="password">Password: </label>
+            <input type = "text" name = "password" id = "password">
+            <span id = "errorMsg"></span>
+            <label for="age">Age: </label>
+            <input type="number" name = "age" id = "age">
+            <span id = "errorMsg"></span>
+            <label for="acceptTerms"> I have read and accept the terms: </label>
+            <input type = "checkbox" name = "acceptTerms" id = "acceptTerms">
+            <span id = "errorMsg"></span>
+            <input type = "submit" value = "Submit">
+        </form>
+    </body>
