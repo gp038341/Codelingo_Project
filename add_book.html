@@ -1,0 +1,50 @@
+<style>
+    .background
+    {
+        background-color: rgb(0, 204, 255);
+    }
+    .text
+    {
+        background-color: white;
+        padding: 2px;
+    }
+    .title
+    {
+        margin: 0px 650px;
+        background-color: white;
+        width: 500px;
+        height: 50px;
+        text-align: center;
+        padding: 5px;
+        border: 5px solid black;
+    }
+</style>
+<body class = "background">
+    <h1 class="title">Add a Book</h1>
+    <form method = "get" action = "add_book.php">
+        <p>
+            <label for = "id" class = "text">ID?</label>
+            <input type ="number" name="id" id="id">
+        </p>
+        <p>
+            <label for = "book_name" class = "text">Book Name?</label>
+            <input type ="text" name="book_name" id="book_name">
+        </p>
+        <p>
+            <label for = "author" class = "text">Author?</label>
+            <input type ="text" name="author" id="author">
+        </p>
+        <p>
+            <label for = "year" class = "text">Year?</label>
+            <input type ="number" name="year" id="year">
+        </p>
+        <p>
+            <label for = "image" class = "text">Image?</label>
+            <input type ="text" name="image" id="image">
+        </p>
+        <p>
+            <input type = "submit" value = "Submit">
+        </p>
+    </form>
+    <img src = "jbu_logo.webp" alt = "img" width="1500" height="550" style = "transform: translate(180px, 0px);">
+</body>
