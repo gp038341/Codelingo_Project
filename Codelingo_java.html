@@ -7,10 +7,71 @@
             {
                 background-image: url("java_background.webp");
             }
+            .title
+            {
+                position: relative;
+                left: -0.25%;
+                background-color: rgb(255, 255, 255);
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                border: 5px solid black;
+            }
+            .info_text
+            {
+                position: relative;
+                left: 0%;
+                background-color: rgb(255, 255, 255);
+                width: 550px;
+                height: 1010px;
+                border: 5px solid black;
+            }
+            .code_block 
+            {
+                width: 67%;
+                height: 110%;
+                background-color: rgb(255, 255, 255);
+                border: 5px solid black;
+                position: absolute;
+                top: 12%; /* Move down from the top by 10 pixels */
+                left: 32%; /* Move from the left by 20 pixels */
+                display: block;
+            }
+            textarea
+            {
+                width: 100%;
+                height: 300px;
+                margin-top: 20px;
+            }
         </style>
     </head>
     <body class = "background">
-        <h1>
+        <h1 class="title">
             Welcome to Java!
         </h1>
+        <div class = "info_text">
+            Java is aslkdf aslkfjd aksdlaf jklsjda flkjsfda lkdja flkdajf ldsakfj lkasjd f
+        </div>
+        <!-- Embed JDoodle iframe with the specific code execution -->
+        <div class = "code_block" data-pym-src='https://www.jdoodle.com/embed/v1/2a41d6719d597ade?stdin=0&arg=0'></div>
+        <script src='https://www.jdoodle.com/assets/jdoodle-pym.min.js' type='text/javascript'></script>
+        <script>
+            // Listening to when the user runs the code
+            window.addEventListener('message', async function (event) {
+                // Check for JDoodle iframe event
+                if (event.origin !== 'https://www.jdoodle.com') return; // Validate the source
+    
+                // Get the output from JDoodle iframe
+                const output = event.data.output;
+    
+                // Now we need to compare the output with some expected value
+                const expectedOutput = "Hello, JDoodle!";
+                if (output.trim() === expectedOutput) {
+                    alert('Correct Output!');
+                } else {
+                    alert('Incorrect Output. Please try again.');
+                }
+            });
+        </script>
     </body>
+</html>
