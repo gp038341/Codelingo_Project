@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create An Account</title>
+        <script src = "validate.js" defer></script>
+        <style>
+            .background
+            {
+                background-image: url("Codelingo_background.webp");
+            }
+            .title
+            {
+                position: relative;
+                left: 40%;
+                background-color: rgb(255, 255, 255);
+                width: 250px;
+                height: 85px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid black;
+            }
+            #errorMsg{
+                position: relative;
+                left: -50%;
+                color : red;
+                /*background-color: rgb(255, 255, 255);*/
+                font-size: 20px;
+            }
+            .format
+            {
+                position: relative;
+                left: 15%;
+                margin: 40px 0px;
+            }
+            .text
+            {
+                position: relative;
+                left: -1%;
+                background-color: rgb(255, 255, 255);
+                border: 1px solid black;
+            }
+            .submit
+            {
+                position: relative;
+                left: 75%;
+            }
+            .button1
+            {
+                position: static;
+                background-color: rgb(0, 224, 213);
+                width: 100px;
+                height: 40px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 10px;
+                color: white;
+            }
+            .button1:hover
+            {
+                position: static;
+                background-color: rgb(0, 255, 234);
+                width: 100px;
+                height: 40px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 10px;
+                color: white;
+                
+            }
+            .form_background
+            {
+                position: relative;
+                left: 35%;
+                background-color: rgb(0, 255, 234);
+                width: 450px;
+                height: 450px;
+                border: 5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <body class = "background">
+            <p>
+                <a href = "file:///M:/Web_Applications/Codelingo_login.html"><button class = "button1">Login</button></a>
+            </p>
+        <h1 class="title">Create an Account</h1>
+        <form class = "form_background" onsubmit="return checkValid(event)" action="file:///M:/Web_Applications/Project.html">
+            <p class = "format">
+                <label for="first" class = "text">First Name: </label>
+                <input type = "text" name = "first" id = "first">
+            </p>
+            <p class = "format">
+                <label for="last" class = "text">Last Name: </label>
+                <input type = "text" name = "last" id = "last">
+            </p>
+            <p class = "format">
+                <label for="emailAddr" class = "text">Email Address:</label>
+                <input type="text" name="emailAddr" id="emailAddr">
+            </p>
+            <p class = "format">
+                <label for="password" class = "text">Password: </label>
+                <input type = "text" name = "password" id = "password">
+            </p>
+            <p class = "format">
+                <label for="age" class = "text">Age: </label>
+                <input type="number" name = "age" id = "age">
+            </p>
+            <p class = "submit">
+                <input type = "submit" value = "Submit">
+            </p>
+            <p class = "submit">
+                <span id = "errorMsg"></span>
+            </p>
+        </form>
+    </body>
