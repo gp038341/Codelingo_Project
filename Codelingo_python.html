@@ -23,30 +23,116 @@
                 left: 0%;
                 background-color: rgb(255, 255, 255);
                 width: 550px;
-                height: 1010px;
+                height: 880px;
                 border: 5px solid black;
             }
             .code_block 
             {
-                width: 67%;
-                height: 110%;
+                width: 36%;
+                height: 50%;
                 background-color: rgb(255, 255, 255);
                 border: 5px solid black;
                 position: absolute;
-                top: 12%; /* Move down from the top by 10 pixels */
-                left: 32%; /* Move from the left by 20 pixels */
+                top: 18%; /* Move down from the top by 10 pixels */
+                left: 52%; /* Move from the left by 20 pixels */
                 display: block;
             }
+            .output_block
+            {
+                width: 37%;
+                height: 70%;
+                background-color: rgb(255, 255, 255);
+                border: 5px solid black;
+                position: absolute;
+                top: 81%; /* Move down from the top by 10 pixels */
+                left: 52%; /* Move from the left by 20 pixels */
+                display: block;
+            }
+            .output_label
+            {
+                width: 37%;
+                height: 10%;
+                background-color: rgb(255, 255, 255);
+                border: 5px solid black;
+                position: absolute;
+                top: 68%; /* Move down from the top by 10 pixels */
+                left: 52%; /* Move from the left by 20 pixels */
+                display: block;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            button
+            {
+                position: absolute;
+                top: 155%;
+                left: 52%;
+                background-color: rgb(0, 224, 213);
+                width: 120px;
+                height: 50px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 20px;
+                color: white;
+            }
         </style>
-    </head>
-    <body class = "background">
-        <h1 class="title">
-            Welcome to Python!
-        </h1>
-        <div class = "info_text">
-            Python is aslkdf aslkfjd aksdlaf jklsjda flkjsfda lkdja flkdajf ldsakfj lkasjd f
-        </div>
-        <!-- Embed JDoodle iframe with the specific code execution -->
-        <div class = "code_block" data-pym-src='https://www.jdoodle.com/embed/v1/cda9c945af9ede83?stdin=0&arg=0'></div>
-        <script src='https://www.jdoodle.com/assets/jdoodle-pym.min.js' type='text/javascript'></script>
-    </body>
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeInput").value;
+
+            const payload = {
+                script: code,
+                language: "python3",
+                versionIndex: "3",
+                clientId: "7020535108b6119bc7b2e57e7de75dde",
+                clientSecret: "3c9dcbe700b40610615de7602bb1ac1e0d9c5a13899acb33b4e232bc944e19a7"
+            };
+
+            fetch("http://localhost:3000/run", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const expectedOutput = "Hello from JDoodle!\n";
+                console.log("Output:", data);
+                document.getElementById("outputContainer").innerText = data.output || "No output returned.";
+                if ((data.output || "").trim() === expectedOutput.trim()){
+                    alert('Correct Output!');
+                }
+                else{
+                    alert('Incorrect Output. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("outputContainer").innerText = "An error occurred: " + error.message;
+            });
+            if (code.trim() === "") {
+                document.getElementById("outputContainer").innerText = "Please enter some code to run.";
+            } else {
+                document.getElementById("outputContainer").innerText = "Running your code...";
+            }
+        }
+    </script>
+</head>
+<body class = "background">
+    <h1 class = "title">Python Lesson 1</h1>
+    <div class = "info_text">
+        Python is aslkdf aslkfjd aksdlaf jklsjda flkjsfda lkdja flkdajf ldsakfj lkasjd f
+    </div>
+    <textarea class = "code_block" id="codeInput" rows="10" cols="80">
+print("Enter your code here")
+    </textarea><br>
+    <button onclick="runCode()">Run Code</button>
+    
+    <h2 class = "output_label">Output:</h2>
+    <pre class = "output_block" id="outputContainer"></pre>
+
+</body>
+</html>
