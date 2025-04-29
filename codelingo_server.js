@@ -1,27 +1,38 @@
 const express = require('express');
-const axios = require('axios');
-const app = express();
-app.use(express.json());
+const bodyParser = require('body-parser');
+const fetch = global.fetch;
+const cors = require('cors');
 
-app.post('/run-code', async (req, res) => {
-    const { script, language, versionIndex } = req.body;
+const app = express();
+const PORT = 3000;
+
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post('/run', async (req, res) => {
+    const { script, language, versionIndex, clientId, clientSecret } = req.body;
+
+    const payload = {
+        script,
+        language,
+        versionIndex,
+        clientId,
+        clientSecret
+    };
 
     try {
-        const response = await axios.post('https://api.jdoodle.com/v1/execute', {
-            clientId: '7020535108b6119bc7b2e57e7de75dde',
-            clientSecret: '3c9dcbe700b40610615de7602bb1ac1e0d9c5a13899acb33b4e232bc944e19a7',
-            script: script,
-            language: language,
-            versionIndex: versionIndex
+        const response = await fetch('https://api.jdoodle.com/v1/execute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
-
-        // Send the result back to the frontend
-        res.json(response.data);
+        const data = await response.json();
+        res.json(data);
     } catch (error) {
-        res.status(500).json({ error: 'Execution failed' });
+        res.status(500).json({ error: error.toString() });
     }
 });
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
