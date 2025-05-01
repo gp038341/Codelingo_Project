@@ -10,21 +10,46 @@
             .title
             {
                 position: relative;
-                left: -0.25%;
+                left: 25%;
                 background-color: rgb(255, 255, 255);
-                width: 100%;
+                width: 50%;
                 height: 50px;
                 text-align: center;
                 border: 5px solid black;
             }
+            .level_number
+            {
+                position: absolute;
+                left: 5%;
+                top: 0%;
+                background-color: rgb(255, 255, 255);
+                width: 15%;
+                height: 50px;
+                text-align: center;
+                border: 5px solid black;
+            }
+            .username_display
+            {
+                position: absolute;
+                left: 80%;
+                top: 0%;
+                background-color: rgb(255, 0, 0);
+                width: 15%;
+                height: 50px;
+                text-align: center;
+                border: 5px solid rgb(255, 255, 255);
+                color: white;
+            }
             .info_text
             {
-                position: relative;
-                left: 0%;
+                position: absolute;
+                left: 3%;
+                top: 22%;
                 background-color: rgb(255, 255, 255);
                 width: 550px;
                 height: 880px;
                 border: 5px solid black;
+                font-size: 20px;
             }
             .code_block 
             {
@@ -33,42 +58,117 @@
                 background-color: rgb(255, 255, 255);
                 border: 5px solid black;
                 position: absolute;
-                top: 18%; /* Move down from the top by 10 pixels */
+                top: 22%; /* Move down from the top by 10 pixels */
                 left: 52%; /* Move from the left by 20 pixels */
                 display: block;
+                font-size: 20px;
             }
             .output_block
             {
                 width: 37%;
-                height: 70%;
+                height: 72%;
                 background-color: rgb(255, 255, 255);
                 border: 5px solid black;
                 position: absolute;
-                top: 81%; /* Move down from the top by 10 pixels */
+                top: 83%; /* Move down from the top by 10 pixels */
                 left: 52%; /* Move from the left by 20 pixels */
                 display: block;
+                font-size: 20px;
             }
             .output_label
             {
                 width: 37%;
-                height: 10%;
-                background-color: rgb(255, 255, 255);
-                border: 5px solid black;
+                height: 5%;
+                background-color: rgb(255, 0, 0);
+                border: 5px solid rgb(255, 255, 255);
                 position: absolute;
-                top: 68%; /* Move down from the top by 10 pixels */
+                top: 73%; /* Move down from the top by 10 pixels */
                 left: 52%; /* Move from the left by 20 pixels */
                 display: block;
                 text-align: center;
                 font-size: 20px;
                 font-weight: bold;
+                color: white;
             }
-            button
+            .input_label
+            {
+                width: 36%;
+                height: 5%;
+                background-color: rgb(255, 0, 0);
+                border: 5px solid white;
+                position: absolute;
+                top: 12%; /* Move down from the top by 10 pixels */
+                left: 52%; /* Move from the left by 20 pixels */
+                display: block;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+            }
+            .lesson_label
+            {
+                width: 36%;
+                height: 5%;
+                background-color: rgb(255, 0, 0);
+                border: 5px solid white;
+                position: absolute;
+                top: 12%; /* Move down from the top by 10 pixels */
+                left: 5%; /* Move from the left by 20 pixels */
+                display: block;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+            }
+            .run_button
             {
                 position: absolute;
-                top: 155%;
+                top: 160%;
                 left: 52%;
-                background-color: rgb(0, 224, 213);
-                width: 120px;
+                background-color: rgb(255, 0, 0);
+                width: 160px;
+                height: 50px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 20px;
+                color: white;
+            }
+            .home_button
+            {
+                position: absolute;
+                top: 160%;
+                left: 65%;
+                background-color: rgb(255, 0, 0);
+                width: 160px;
+                height: 50px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 20px;
+                color: white;
+            }
+            .next_level_button
+            {
+                position: absolute;
+                top: 160%;
+                left: 78%;
+                background-color: rgb(255, 0, 0);
+                width: 160px;
+                height: 50px;
+                text-align: center;
+                padding: 5px;
+                border: 5px solid rgb(255, 255, 255);
+                font-family: "Comic Sans MS";
+                font-size: 20px;
+                color: white;
+            }
+            .next_level_button:hover, .home_button:hover, .run_button:hover
+            {
+                background-color: rgb(255, 136, 146);
+                width: 160px;
                 height: 50px;
                 text-align: center;
                 padding: 5px;
@@ -123,6 +223,9 @@
 </head>
 <body class = "background">
     <h1 class = "title">Java Lesson 1</h1>
+    <h1 class = "level_number">1/5</h1>
+    <h1 class = "username_display">Username</h1>
+    <h2 class = "lesson_label">Lesson 1 - Intro to Java</h2>
     <div class = "info_text">
         Java is aslkdf aslkfjd aksdlaf jklsjda flkjsfda lkdja flkdajf ldsakfj lkasjd f
     </div>
@@ -133,10 +236,13 @@ public class Main {
     }
 }
     </textarea><br>
-    <button onclick="runCode()">Run Code</button>
+    <button class = "run_button" onclick="runCode()">Run Code</button>
+    <button class = "home_button" onclick="window.location.href='file:///M:/Web_Applications/Project.html'">Home</button>
+    <button class = "next_level_button" onclick="window.location.href='file:///M:/Web_Applications/Codelingo_java.html'">Next Level</button>
     
+    <h2 class = "input_label">Input:</h2>
     <h2 class = "output_label">Output:</h2>
-    <pre class = "output_block" id="outputContainer"></pre>
+    <textarea class = "output_block" id="outputContainer"></textarea>
 
 </body>
 </html>
